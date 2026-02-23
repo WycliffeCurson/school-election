@@ -40,6 +40,31 @@ body{
   color: white;
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-card {
+  display: flex;
+  padding: 1rem;
+  width: 90%;
+  text-align: center;
+  justify-content: center;
+}
+
+.button-container {
+  max-width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+}
+
 /* TABLETS AND DESKTOPS */
 @media (min-width:768px){
   .landing{
