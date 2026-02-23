@@ -21,6 +21,25 @@ body{
   padding: 2rem;
 }
 
+.left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-card{
+  display: flex;
+  padding: 1rem;
+  width: 90%;
+  background: #615335;
+  max-height: 20%;
+  text-align: center;
+}
+
+.card-description h1{
+  color: white;
+}
+
 /* TABLETS AND DESKTOPS */
 @media (min-width:768px){
   .landing{
