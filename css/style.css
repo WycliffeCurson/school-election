@@ -11,5 +11,19 @@ body{
 }
 
 .landing{
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.left, .right{
+  flex: 1;
+  padding: 2rem;
+}
+
+/* TABLETS AND DESKTOPS */
+@media (min-width:768px){
+  .landing{
+    flex-direction: row;
+  }
 }
