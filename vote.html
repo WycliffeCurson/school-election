@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/vote.css">
 </head>
+
 <body>
-  <main></main>
-  
+  <main>
+    <div class="school-name">
+      <h3>Heshima Road Primary and Junior School</h3>
+      <div class="divider"></div>
+      <h1>Vote for your representative</h1>
+    </div>
+    <section class="voting-section">
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-target="chair">
+          Chair
+        </button>
+        <button class="tab" data-target="vice">
+          Vice-Chair
+        </button>
+        <button class="tab" data-target="speaker">
+          Speaker
+        </button>
+        <!-- Moving underline -->
+        <div class="underline"></div>
+      </div>
+
+      <!-- Content Area -->
+
+      <div class="tab-content">
+
+        <!-- Chair Group -->
+        <div class="group active" id="chair">
+          <div class="content-box">
+            Chair candidates go here
+          </div>
+        </div>
+
+        <!-- Vice Chair Group -->
+        <div class="group" id="vice">
+          <div class="content-box">
+            Vice Chair candidates go here
+          </div>
+        </div>
+
+        <!-- Speaker Group -->
+        <div class="group" id="speaker">
+          <div class="content-box">
+            Speaker candidates go here
+          </div>
+        </div>
+
+    </section>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const groups = document.querySelectorAll(".group");
+    const underline = document.querySelector(".underline");
+
+    tabs.forEach((tab, index) => {
+
+      tab.addEventListener("click", () => {
+
+        /* remove active */
+        tabs.forEach(t => t.classList.remove("active"));
+        groups.forEach(g => g.classList.remove("active"));
+
+        /* add active */
+        tab.classList.add("active");
+
+        const target = tab.dataset.target;
+        document.getElementById(target).classList.add("active");
+
+        /* move underline */
+        underline.style.left = index * 33.33 + "%";
+
+      });
+
+    });
+  </script>
+
 </body>
+
 </html>
