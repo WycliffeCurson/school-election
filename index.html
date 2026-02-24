@@ -37,10 +37,10 @@
   <div class="modal" id="registerModal">
     <div class="modal-box">
       <div class="modal-left">
-          <div class="circle"></div>
-        
-          <img src="assets/icons/person_raised_hand_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
-        
+        <div class="circle"></div>
+
+        <img src="assets/icons/person_raised_hand_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
+
       </div>
       <div class="modal-right">
         <span class="close" id="closeRegister">X</span>
@@ -59,40 +59,57 @@
           <input type="password" name="password" required>
           <br>
           <button class="right-btn">Submit</button>
-          </form>
+        </form>
       </div>
     </div>
   </div>
-  
+
   <!-- LOGIN MODAL -->
   <div class="modal" id="loginModal">
     <div class="modal-box">
-      <div class="modal-left"></div>
+      <div class="modal-left">
+        <div class="circle"></div>
+
+        <img src="assets/icons/how_to_reg_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
+      </div>
       <div class="modal-right">
         <span class="close" id="closeLogin">X</span>
+        <h2>Login</h2>
+        <form>
+          <label for="firstname">First name: </label>
+          <input type="text" name="firstname" required>
+          <br>
+          <label for="email">email: </label>
+          <input type="email" name="email" required>
+          <br>
+          <label for="password">password: </label>
+          <input type="password" name="password" required>
+          <br>
+          <button class="right-btn">Login</button>
+        </form>
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
-  
+
   <script>
     const registerBtn = document.querySelector(".left-btn");
-      const loginBtn = document.querySelector(".right-btn");
+    const loginBtn = document.querySelector(".right-btn");
 
-      const registerModal = document.getElementById("registerModal");
-      const loginModal = document.getElementById("loginModal");
+    const registerModal = document.getElementById("registerModal");
+    const loginModal = document.getElementById("loginModal");
 
-      const closeRegister = document.getElementById("closeRegister");
-      const closeLogin = document.getElementById("closeLogin");
+    const closeRegister = document.getElementById("closeRegister");
+    const closeLogin = document.getElementById("closeLogin");
 
-      registerBtn.onclick = () => registerModal.style.display = "flex";
+    registerBtn.onclick = () => registerModal.style.display = "flex";
 
-      loginBtn.onclick = () => loginModal.style.display = "flex";
+    loginBtn.onclick = () => loginModal.style.display = "flex";
 
-      closeRegister.onclick = () => registerModal.style.display = "none";
+    closeRegister.onclick = () => registerModal.style.display = "none";
 
-      closeLogin.onclick = () => loginModal.style.display = "none";
+    closeLogin.onclick = () => loginModal.style.display = "none";
   </script>
 
 </body>
