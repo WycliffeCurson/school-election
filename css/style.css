@@ -128,11 +128,44 @@ button:hover {
 
 .modal-box {
   width: 90%;
-  max-width: 500px;
-  min-height: 300px;
+  max-width: 800px;
+  min-height: 500px;
   background: white;
   border-radius: 10px;
   padding: 1rem;
+  display: flex;
+}
+
+.modal-right,
+.modal-left {
+  flex: 1;
+}
+
+.modal-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  width: 220px;
+  height: 220px;
+  background: #615335;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.person {
+  width: 150px;
+  position: relative;
+  z-index: 1;
+  color: #ddd;
+}
+
+.modal-right {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
 }
 
 /* Close button */
@@ -140,6 +173,29 @@ button:hover {
 .close {
   cursor: pointer;
   float: right;
+}
+
+.modal-right h2 {
+  color: #181b4c;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-size: 13px;
+}
+
+input {
+  height: 30px;
+  border: solid 1px #181b4c;
+  padding-left: 10px;
+  background: #ddd;
 }
 
 /* TABLETS AND DESKTOPS */

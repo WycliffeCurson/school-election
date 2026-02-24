@@ -36,28 +36,41 @@
   <!-- REGISTER MODAL -->
   <div class="modal" id="registerModal">
     <div class="modal-box">
-      <span class="close" id="closeRegister">X</span>
+      <div class="modal-left">
+          <div class="circle"></div>
+        
+          <img src="assets/icons/person_raised_hand_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
+        
+      </div>
+      <div class="modal-right">
+        <span class="close" id="closeRegister">X</span>
+        <h2>Registration form</h2>
+        <form>
+          <label for="firstname">First name: </label>
+          <input type="text" name="firstname" required>
+          <br>
+          <label for="lastname">Last name: </label>
+          <input type="text" name="lastname" required>
+          <br>
+          <label for="email">email: </label>
+          <input type="email" name="email" required>
+          <br>
+          <label for="password">password: </label>
+          <input type="password" name="password" required>
+          <br>
+          <button class="right-btn">Submit</button>
+          </form>
+      </div>
     </div>
   </div>
   
   <!-- LOGIN MODAL -->
   <div class="modal" id="loginModal">
     <div class="modal-box">
-      <span class="close" id="closeLogin">X</span>
-    </div>
-  </div>
-
-  <!-- REGISTER MODAL -->
-  <div class="modal" id="registerModal">
-    <div class="modal-box">
-      <span class="close" id="closeRegister">X</span>
-    </div>
-  </div>
-  
-  <!-- LOGIN MODAL -->
-  <div class="modal" id="loginModal">
-    <div class="modal-box">
-      <span class="close" id="closeLogin">X</span>
+      <div class="modal-left"></div>
+      <div class="modal-right">
+        <span class="close" id="closeLogin">X</span>
+      </div>
     </div>
   </div>
 
