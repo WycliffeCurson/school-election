@@ -15,6 +15,12 @@ tabs.forEach((tab, index) => {
 
   tab.addEventListener("click", () => {
 
+    // Prevent skipping ahead
+    const votedCount = document.querySelectorAll(".group .vote-btn.voted").length;
+    if (index > votedCount) return;
+
+
+    // Normal tab behavior
     tabs.forEach(t => t.classList.remove("active"));
     groups.forEach(g => g.classList.remove("active"));
 
