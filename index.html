@@ -32,6 +32,56 @@
       </div>
     </section>
   </main>
+
+  <!-- REGISTER MODAL -->
+  <div class="modal" id="registerModal">
+    <div class="modal-box">
+      <span class="close" id="closeRegister">X</span>
+    </div>
+  </div>
+  
+  <!-- LOGIN MODAL -->
+  <div class="modal" id="loginModal">
+    <div class="modal-box">
+      <span class="close" id="closeLogin">X</span>
+    </div>
+  </div>
+
+  <!-- REGISTER MODAL -->
+  <div class="modal" id="registerModal">
+    <div class="modal-box">
+      <span class="close" id="closeRegister">X</span>
+    </div>
+  </div>
+  
+  <!-- LOGIN MODAL -->
+  <div class="modal" id="loginModal">
+    <div class="modal-box">
+      <span class="close" id="closeLogin">X</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+  <script>
+    const registerBtn = document.querySelector(".left-btn");
+      const loginBtn = document.querySelector(".right-btn");
+
+      const registerModal = document.getElementById("registerModal");
+      const loginModal = document.getElementById("loginModal");
+
+      const closeRegister = document.getElementById("closeRegister");
+      const closeLogin = document.getElementById("closeLogin");
+
+      registerBtn.onclick = () => registerModal.style.display = "flex";
+
+      loginBtn.onclick = () => loginModal.style.display = "flex";
+
+      closeRegister.onclick = () => registerModal.style.display = "none";
+
+      closeLogin.onclick = () => loginModal.style.display = "none";
+  </script>
+
 </body>
 
 </html>

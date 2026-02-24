@@ -113,6 +113,35 @@ button:hover {
   font-size: 1rem;
 }
 
+/* Modal background */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(97, 83, 53, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Empty modal box */
+
+.modal-box {
+  width: 90%;
+  max-width: 500px;
+  min-height: 300px;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* Close button */
+
+.close {
+  cursor: pointer;
+  float: right;
+}
+
 /* TABLETS AND DESKTOPS */
 @media (min-width:768px) {
   .landing {
