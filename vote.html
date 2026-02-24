@@ -118,32 +118,7 @@
     </section>
   </main>
 
-  <script>
-    const tabs = document.querySelectorAll(".tab");
-    const groups = document.querySelectorAll(".group");
-    const underline = document.querySelector(".underline");
 
-    tabs.forEach((tab, index) => {
-
-      tab.addEventListener("click", () => {
-
-        /* remove active */
-        tabs.forEach(t => t.classList.remove("active"));
-        groups.forEach(g => g.classList.remove("active"));
-
-        /* add active */
-        tab.classList.add("active");
-
-        const target = tab.dataset.target;
-        document.getElementById(target).classList.add("active");
-
-        /* move underline */
-        underline.style.left = index * 33.33 + "%";
-
-      });
-
-    });
-  </script>
   <script src="js/vote.js"></script>
 
 </body>
