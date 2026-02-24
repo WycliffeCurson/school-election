@@ -54,7 +54,9 @@ voteButtons.forEach(btn => {
     });
 
 
-    /* AUTO MOVE NEXT */
+    // ============================
+    // MOVE TO NEXT TAB OR FINISH
+    // ============================
 
     const currentIndex = Array.from(groups).indexOf(group);
     const nextIndex = currentIndex + 1;
@@ -70,6 +72,26 @@ voteButtons.forEach(btn => {
         groups[nextIndex].classList.add("active");
 
         underline.style.left = nextIndex * 33.33 + "%";
+
+      }, 700);
+
+    } else {
+
+      // All positions voted
+      setTimeout(() => {
+
+        document.querySelector(".voting-section").innerHTML = `
+          <div style="text-align:center; padding: 4rem;">
+            <h1 style="color:#39a84f; font-size: 2.5rem;">
+              ✔ Vote Submitted!
+            </h1>
+    
+            <p style="margin-top:1rem; color:#615335; font-size:1.2rem;">
+              Thank you for participating in the election.
+            </p>
+    
+          </div>
+        `;
 
       }, 700);
 
