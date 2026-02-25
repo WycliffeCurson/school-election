@@ -80,9 +80,130 @@ body {
 
 .content-box {
   display: flex;
+  flex-direction: column;
   min-height: 200px;
   border: 1px solid #615335;
   padding: 20px;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: center;
+}
+
+/* Card */
+.result-card {
+  width: 100%;
+  background: #f4f1e6;
+  border-radius: 8px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* POSITION label */
+.position-tag {
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  background: #181b4c;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 6px 6px 0 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Layout */
+.card-content {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Image */
+.candidate-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Text area */
+.candidate-info {
+  flex: 1;
+}
+
+.candidate-info h3 {
+  font-size: 20px;
+}
+
+.candidate-info p {
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Progress area */
+.progress-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Bar background */
+.progress-bar {
+  flex: 1;
+  height: 12px;
+  background: #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Filled part */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #4c4cff, #2b2bb5);
+}
+
+/* Percentage */
+.percent {
+  font-weight: bold;
+  color: #3a3ab8;
+}
+
+/* Vice Chair - green */
+.progress-fill.green {
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+.percent.green {
+  color: #27ae60;
+}
+
+/* Speaker - orange/gold */
+.progress-fill.gold {
+  background: linear-gradient(to right, #f39c12, #e67e22);
+}
+
+.percent.gold {
+  color: #e67e22;
+}
+
+/* position tag colors per role */
+.position-tag.chair {
+  background: #181b4c;
+}
+
+.position-tag.vice {
+  background: #27ae60;
+}
+
+.position-tag.speaker {
+  background: #e67e22;
+}
+
+/* hide groups */
+.group {
+  display: none;
+}
+
+.group.active {
+  display: block;
 }
