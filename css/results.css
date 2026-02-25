@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -19,7 +19,7 @@ body {
   color: #615335;
 }
 
-.school-name p{
+.school-name p {
   color: #181b4c;
 }
 
@@ -28,4 +28,44 @@ body {
   width: 35%;
   height: 2px;
   background: #615335;
+}
+
+/* SECTION */
+
+.results-section {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* TABS */
+
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ccc;
+}
+
+
+.tab {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* UNDERLINE */
+
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 33.33%;
+  height: 3px;
+  background: black;
+  transition: 0.3s;
 }
