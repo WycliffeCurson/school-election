@@ -88,7 +88,7 @@ body {
 .content-box {
   display: flex;
   min-height: 200px;
-  border: 1px solid #ccc;
+  border: 1px solid #615335;
   padding: 20px;
   gap: 4rem;
   justify-content: center;
