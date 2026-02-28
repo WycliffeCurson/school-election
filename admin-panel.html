@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Heshima Election</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h3>Heshima Road Primary</h3>
+      <span>Admin Panel</span>
+    </div>
+    <button id="logoutBtn">Logout</button>
+  </nav>
+
+  <main class="admin-main">
+
+    <!-- LEFT: Add Candidate Form -->
+    <section class="panel-left">
+      <div class="panel-card">
+        <h2>Add Candidate</h2>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="candidateName" placeholder="e.g. David Kamau">
+        </div>
+
+        <div class="form-group">
+          <label>Class</label>
+          <input type="text" id="candidateClass" placeholder="e.g. Class 8">
+        </div>
+
+        <div class="form-group">
+          <label>Position</label>
+          <select id="candidatePosition">
+            <option value="">-- Select Position --</option>
+            <option value="chair">Chair</option>
+            <option value="vice">Vice-Chair</option>
+            <option value="speaker">Speaker</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Photo</label>
+          <input type="file" id="candidatePhoto" accept="image/*">
+          <div class="photo-preview" id="photoPreview">
+            <span>No photo selected</span>
+          </div>
+        </div>
+
+        <span class="form-error" id="candidateError"></span>
+        <button id="addCandidateBtn">Add Candidate</button>
+      </div>
+    </section>
+
+    <!-- RIGHT: Candidates List -->
+    <section class="panel-right">
+      <div class="panel-card">
+        <h2>Registered Candidates</h2>
+
+        <div class="candidates-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="chair">Chair</button>
+          <button class="filter-btn" data-filter="vice">Vice-Chair</button>
+          <button class="filter-btn" data-filter="speaker">Speaker</button>
+        </div>
+
+        <div id="candidatesList">
+          <p class="empty-msg">No candidates added yet.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/admin-panel.js"></script>
+</body>
+
+</html>
