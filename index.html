@@ -38,55 +38,53 @@
     <div class="modal-box">
       <div class="modal-left">
         <div class="circle"></div>
-
         <img src="assets/icons/person_raised_hand_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
-
       </div>
       <div class="modal-right">
         <span class="close" id="closeRegister">X</span>
-        <h2>Registration form</h2>
-        <form>
-          <label for="firstname">First name: </label>
-          <input type="text" name="firstname" required>
-          <br>
-          <label for="lastname">Last name: </label>
-          <input type="text" name="lastname" required>
-          <br>
-          <label for="email">email: </label>
-          <input type="email" name="email" required>
-          <br>
-          <label for="password">password: </label>
-          <input type="password" name="password" required>
-          <br>
-          <button type="button" class="right-btn">Submit</button>
+        <h2>Register</h2>
+        <form id="registerForm">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="e.g. John Doe" required>
+  
+          <label for="admNo">Admission Number</label>
+          <input type="text" id="admNo" placeholder="e.g. STD-001" required>
+  
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" placeholder="Create a password" required>
+  
+          <span class="form-error" id="registerError"></span>
+  
+          <button type="button" class="right-btn" id="registerSubmit">Register</button>
         </form>
       </div>
     </div>
-  </div>
-
-  <!-- LOGIN MODAL -->
-  <div class="modal" id="loginModal">
-    <div class="modal-box">
-      <div class="modal-left">
-        <div class="circle"></div>
-
-        <img src="assets/icons/how_to_reg_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
-      </div>
-      <div class="modal-right">
-        <span class="close" id="closeLogin">X</span>
-        <h2>Login</h2>
-        <form>
-          <label for="email">email: </label>
-          <input type="email" name="email" required>
-          <br>
-          <label for="password">password: </label>
-          <input type="password" name="password" required>
-          <br>
-          <button type="button" class="right-btn">Login</button>
-        </form>
-      </div>
     </div>
-  </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="loginModal">
+      <div class="modal-box">
+        <div class="modal-left">
+          <div class="circle"></div>
+          <img src="assets/icons/how_to_reg_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" class="person">
+        </div>
+        <div class="modal-right">
+          <span class="close" id="closeLogin">X</span>
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label for="loginAdmNo">Admission Number</label>
+            <input type="text" id="loginAdmNo" placeholder="e.g. STD-001" required>
+    
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Your password" required>
+    
+            <span class="form-error" id="loginError"></span>
+    
+            <button type="button" class="right-btn" id="loginSubmit">Login</button>
+          </form>
+        </div>
+      </div>
+      </div>
 
   <script>
     const registerBtn = document.querySelector(".left-btn");

@@ -198,6 +198,12 @@ input {
   background: #ddd;
 }
 
+.form-error {
+  color: red;
+  font-size: 12px;
+  min-height: 16px;
+}
+
 /* TABLETS AND DESKTOPS */
 @media (min-width:768px) {
   .landing {
