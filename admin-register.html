@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Registration</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main class="landing" style="justify-content:center; align-items:center; display:flex; min-height:100dvh;">
+    <div class="right-card" style="max-width:400px; width:100%; padding:2rem;">
+      <h2 style="color:#181b4c; margin-bottom:1rem;">Admin Registration</h2>
+      <form id="adminRegisterForm" style="display:flex; flex-direction:column; gap:8px;">
+        <label>Full Name</label>
+        <input type="text" id="adminName" placeholder="e.g. Mrs. Wanjiku" required>
+
+        <label>Email</label>
+        <input type="email" id="adminEmail" placeholder="admin@heshima.school" required>
+
+        <label>Password</label>
+        <input type="password" id="adminPassword" placeholder="Create a strong password" required>
+
+        <span class="form-error" id="adminError"></span>
+
+        <button type="button" id="adminRegisterBtn" class="right-btn" style="margin-top:1rem;">
+          Create Admin Account
+        </button>
+      </form>
+    </div>
+  </main>
+  <script type="module" src="js/admin-auth.js"></script>
+</body>
+
+</html>
