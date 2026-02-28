@@ -15,7 +15,11 @@
       <p>Electoral System</p>
       <div class="divider"></div>
       <h1>ELECTION RESULTS</h1>
-    </div>
+      <button id="logoutBtn"
+        style="margin-top:1rem; background:#615335; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer;">
+        Logout
+      </button>
+      </div>
     <section class="results-section">
 
       <!-- Tabs -->
@@ -41,7 +45,7 @@
         <div class="group active" id="chair">
           <div class="content-box">
       
-            <div class="result-card">
+            <div class="result-card winner">
               <div class="position-tag chair">1.</div>
               <div class="card-content">
                 <img src="assets/images/_.jpeg" class="candidate-img">
@@ -99,7 +103,7 @@
         <div class="group" id="vice">
           <div class="content-box">
       
-            <div class="result-card">
+            <div class="result-card winner">
               <div class="position-tag vice">1.</div>
               <div class="card-content">
                 <img src="assets/images/Cosmo.jpeg" class="candidate-img">
@@ -157,7 +161,7 @@
         <div class="group" id="speaker">
           <div class="content-box">
       
-            <div class="result-card">
+            <div class="result-card winner">
               <div class="position-tag speaker">1.</div>
               <div class="card-content">
                 <img src="assets/images/_ (1).jpeg" class="candidate-img">
@@ -212,7 +216,6 @@
         </div></div>
     </section>
   </main>
-  <script src="js/results.js"></script>
-</body>
+  <script type="module" src="js/results.js"></script></body>
 
 </html>

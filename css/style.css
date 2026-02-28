@@ -34,19 +34,12 @@ body {
   width: 90%;
   background: #615335;
   min-height: 300px;
-  /* give it real height */
   text-align: center;
   border-radius: 10px;
-
-  clip-path: polygon(0% 0%,
-      100% 0%,
-      100% 90%,
-      80% 90%,
-      80% 100%,
-      50% 90%,
-      0% 90%);
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 80% 90%, 80% 100%, 50% 90%, 0% 90%);
 }
-
 .card-description h1 {
   color: white;
   font-size: 2.5rem;
@@ -173,6 +166,17 @@ button:hover {
 .close {
   cursor: pointer;
   float: right;
+  font-size: 18px;
+  color: #615335;
+  font-weight: bold;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.close:hover {
+  background: #f0e6d2;
 }
 
 .modal-right h2 {
@@ -189,19 +193,30 @@ form {
 
 label {
   font-size: 13px;
+  margin-top: 8px;
+  color: #333;
 }
 
 input {
-  height: 30px;
+  height: 36px;
   border: solid 1px #181b4c;
+  border-radius: 6px;
   padding-left: 10px;
   background: #ddd;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+input:focus {
+  border-color: #615335;
+  background: #f9f5ef;
 }
 
 .form-error {
-  color: red;
   font-size: 12px;
   min-height: 16px;
+  color: red;
+  line-height: 1.4;
 }
 
 /* TABLETS AND DESKTOPS */

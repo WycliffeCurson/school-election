@@ -7,7 +7,9 @@ import {
   doc, setDoc, getDoc, runTransaction
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Modal controls (keep your existing ones)
+/* -------------------------
+MODAL CONTROLS
+--------------------------*/
 const registerBtn = document.querySelector(".left-btn");
 const loginBtn = document.querySelector(".right-btn");
 const registerModal = document.getElementById("registerModal");
@@ -23,10 +25,15 @@ closeLogin.onclick = () => loginModal.style.display = "none";
 /* -------------------------
 VOTER REGISTRATION
 --------------------------*/
+const registerSubmitBtn = document.getElementById("registerSubmit");
+
 document.getElementById("registerSubmit").addEventListener("click", async () => {
   const fullname = document.getElementById("fullname").value.trim();
   const password = document.getElementById("regPassword").value;
   const errorEl = document.getElementById("registerError");
+
+  errorEl.style.color = "red";
+  errorEl.textContent = "";
 
   if (!fullname || !password) {
     errorEl.textContent = "Please fill in all fields.";
@@ -38,8 +45,11 @@ document.getElementById("registerSubmit").addEventListener("click", async () => 
     return;
   }
 
+  // Loading state
+  registerSubmitBtn.disabled = true;
+  registerSubmitBtn.textContent = "Registering...";
+
   try {
-    // Get and increment counter atomically
     const counterRef = doc(db, "meta", "voterCounter");
     let newCount;
 
@@ -49,15 +59,11 @@ document.getElementById("registerSubmit").addEventListener("click", async () => 
       transaction.update(counterRef, { count: newCount });
     });
 
-    // Pad number to 4 digits e.g 0001
     const voterID = String(newCount).padStart(4, "0");
-
-    // Create fake email for Firebase Auth
     const fakeEmail = `${voterID}@heshima.voter`;
 
     const userCredential = await createUserWithEmailAndPassword(auth, fakeEmail, password);
 
-    // Save to Firestore
     await setDoc(doc(db, "users", userCredential.user.uid), {
       fullname,
       voterID,
@@ -67,42 +73,58 @@ document.getElementById("registerSubmit").addEventListener("click", async () => 
     });
 
     errorEl.style.color = "green";
-    errorEl.textContent = `Registration successful! Your Voter ID is: ${voterID} — write this down!`;
+    errorEl.textContent = `✔ Registration successful! Your Voter ID is: ${voterID} — write this down!`;
+    registerSubmitBtn.textContent = "Done ✔";
 
   } catch (err) {
+    console.error(err);
     errorEl.style.color = "red";
-    errorEl.textContent = "Registration failed: " + err.message;
+
+    if (err.code === "auth/weak-password") {
+      errorEl.textContent = "Password too weak. Use at least 6 characters.";
+    } else {
+      errorEl.textContent = "Registration failed. Please try again.";
+    }
+
+    registerSubmitBtn.disabled = false;
+    registerSubmitBtn.textContent = "Register";
   }
 });
 
 /* -------------------------
 SMART LOGIN
 --------------------------*/
+const loginSubmitBtn = document.getElementById("loginSubmit");
+
 document.getElementById("loginSubmit").addEventListener("click", async () => {
   const input = document.getElementById("loginAdmNo").value.trim();
   const password = document.getElementById("loginPassword").value;
   const errorEl = document.getElementById("loginError");
+
+  errorEl.style.color = "red";
+  errorEl.textContent = "";
 
   if (!input || !password) {
     errorEl.textContent = "Please fill in all fields.";
     return;
   }
 
+  // Loading state
+  loginSubmitBtn.disabled = true;
+  loginSubmitBtn.textContent = "Logging in...";
+
   try {
     let email;
-    let isAdminAttempt = input.includes("@");
+    const isAdminAttempt = input.includes("@");
 
     if (isAdminAttempt) {
-      email = input; // admin uses real email
+      email = input;
     } else {
-      // Voter — pad their number and build fake email
       const padded = input.padStart(4, "0");
       email = `${padded}@heshima.voter`;
     }
 
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
-    // Check role in Firestore
     const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
     const userData = userDoc.data();
 
@@ -112,13 +134,24 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
       if (userData.hasVoted) {
         errorEl.style.color = "orange";
         errorEl.textContent = "You have already voted. Thank you!";
+        loginSubmitBtn.disabled = false;
+        loginSubmitBtn.textContent = "Login";
       } else {
         window.location.href = "vote.html";
       }
     }
 
   } catch (err) {
+    console.error(err);
     errorEl.style.color = "red";
-    errorEl.textContent = "Login failed. Check your ID and password.";
+
+    if (err.code === "auth/invalid-credential" || err.code === "auth/user-not-found") {
+      errorEl.textContent = "Invalid Voter ID or password.";
+    } else {
+      errorEl.textContent = "Login failed. Please try again.";
+    }
+
+    loginSubmitBtn.disabled = false;
+    loginSubmitBtn.textContent = "Login";
   }
 });
