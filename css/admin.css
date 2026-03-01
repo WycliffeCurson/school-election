@@ -46,6 +46,26 @@ body {
 .navbar button:hover {
   background: #7a6642;
 }
+.nav-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+#backBtn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+#backBtn:hover {
+  background: white;
+  color: #181b4c;
+}
 
 /* MAIN LAYOUT */
 .admin-main {

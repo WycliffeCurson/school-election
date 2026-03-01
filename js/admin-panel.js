@@ -27,6 +27,14 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 /* -------------------------
+RESULTS (BACK) BUTTON
+--------------------------*/
+
+document.getElementById("backBtn").addEventListener("click", () => {
+  window.location.href = "results.html";
+});
+
+/* -------------------------
 LOGOUT
 --------------------------*/
 document.getElementById("logoutBtn").addEventListener("click", async () => {
