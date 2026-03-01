@@ -155,3 +155,15 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
     loginSubmitBtn.textContent = "Login";
   }
 });
+
+/* -------------------------
+PASSWORD TOGGLE
+--------------------------*/
+document.querySelectorAll(".toggle-password").forEach(toggle => {
+  toggle.addEventListener("click", () => {
+    const input = document.getElementById(toggle.dataset.target);
+    const isHidden = input.type === "password";
+    input.type = isHidden ? "text" : "password";
+    toggle.textContent = isHidden ? "🙈" : "👁️";
+  });
+});

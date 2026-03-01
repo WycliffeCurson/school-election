@@ -239,6 +239,26 @@ input:focus {
   line-height: 1.4;
 }
 
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  color: #615335;
+}
+
 /* TABLETS AND DESKTOPS */
 @media (min-width:768px) {
   .landing {

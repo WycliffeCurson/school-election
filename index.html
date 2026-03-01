@@ -48,7 +48,9 @@
           <input type="text" id="fullname" placeholder="e.g. John Doe" required>
 
           <label for="regPassword">Password</label>
-          <input type="password" id="regPassword" placeholder="Create a password" required>
+          <div class="password-wrapper">
+            <input type="password" id="regPassword" placeholder="Create a password" required>
+            <span class="toggle-password" data-target="regPassword">👁️</span>    </div>
 
           <span class="form-error" id="registerError"></span>
 
@@ -72,8 +74,10 @@
           <label for="loginAdmNo">Voter ID</label>
           <input type="text" id="loginAdmNo" placeholder="e.g. 0001" required>
 
-          <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" placeholder="Your password" required>
+          <label for="regPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="regPassword" placeholder="Create a password" required>
+            <span class="toggle-password" data-target="regPassword">👁️</span>    </div>
 
           <span class="form-error" id="loginError"></span>
 
