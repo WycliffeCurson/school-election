@@ -145,15 +145,13 @@ async function loadCandidates(filter) {
   try {
     let q;
     if (filter === "all") {
-      q = query(collection(db, "candidates"), orderBy("createdAt"));
+      q = query(collection(db, "candidates"));
     } else {
       q = query(
         collection(db, "candidates"),
-        where("position", "==", filter),
-        orderBy("createdAt")
+        where("position", "==", filter)
       );
     }
-
     const snapshot = await getDocs(q);
 
     if (snapshot.empty) {

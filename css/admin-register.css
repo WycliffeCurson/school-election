@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: #f0e6d2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* MAIN LAYOUT */
+.admin-reg-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* LEFT PANEL */
+.admin-reg-left {
+  background: #615335;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+.admin-reg-brand {
+  color: white;
+  text-align: center;
+  max-width: 320px;
+}
+
+.admin-reg-logo {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.admin-reg-brand h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.admin-reg-brand>p {
+  font-size: 0.9rem;
+  color: #e8d5b5;
+  margin-bottom: 1rem;
+}
+
+.admin-reg-divider {
+  width: 50%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 1rem auto;
+}
+
+.admin-reg-brand h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #f0e6d2;
+}
+
+.admin-reg-note {
+  font-size: 12px;
+  color: #d4b896;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+
+/* RIGHT PANEL */
+.admin-reg-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* CARD */
+.admin-reg-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 20px rgba(97, 83, 53, 0.15);
+}
+
+.admin-reg-card h2 {
+  color: #181b4c;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.admin-reg-subtitle {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 1.5rem;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 13px;
+  color: #333;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+input {
+  height: 40px;
+  border: 1px solid #181b4c;
+  border-radius: 6px;
+  padding-left: 10px;
+  background: #f5f5f5;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+  width: 100%;
+}
+
+input:focus {
+  border-color: #615335;
+  background: #fff;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  color: #615335;
+}
+
+.form-error {
+  font-size: 12px;
+  min-height: 16px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* SUBMIT BUTTON */
+#adminRegisterBtn {
+  width: 100%;
+  padding: 12px;
+  background: #181b4c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+#adminRegisterBtn:hover {
+  background: #615335;
+}
+
+#adminRegisterBtn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .admin-reg-main {
+    flex-direction: row;
+  }
+
+  .admin-reg-left {
+    width: 420px;
+    flex-shrink: 0;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+    padding: 4rem 3rem;
+  }
+
+  .admin-reg-brand h1 {
+    font-size: 2rem;
+  }
+}

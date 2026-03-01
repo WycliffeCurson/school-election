@@ -57,10 +57,10 @@ async function loadCandidates() {
     const box = document.getElementById(`${position}-box`);
 
     try {
+      // Remove orderBy to avoid needing composite index
       const q = query(
         collection(db, "candidates"),
-        where("position", "==", position),
-        orderBy("createdAt")
+        where("position", "==", position)
       );
 
       const snapshot = await getDocs(q);
@@ -70,15 +70,19 @@ async function loadCandidates() {
         continue;
       }
 
+      // Sort manually by createdAt
+      let candidates = [];
+      snapshot.forEach(docSnap => {
+        candidates.push({ id: docSnap.id, ...docSnap.data() });
+      });
+      candidates.sort((a, b) => a.createdAt?.toMillis() - b.createdAt?.toMillis());
+
       box.innerHTML = "";
 
-      snapshot.forEach(docSnap => {
-        const c = docSnap.data();
-        const id = docSnap.id;
-
+      candidates.forEach(c => {
         const card = document.createElement("div");
         card.className = "chair-card";
-        card.dataset.candidateId = id;
+        card.dataset.candidateId = c.id;
 
         card.innerHTML = `
           ${c.photo
@@ -93,7 +97,6 @@ async function loadCandidates() {
         box.appendChild(card);
       });
 
-      // Attach vote listeners for this position's cards
       attachVoteListeners(box, position);
 
     } catch (err) {
@@ -190,13 +193,21 @@ async function submitVotes() {
     });
 
     document.querySelector(".voting-section").innerHTML = `
-      <div style="text-align:center; padding:4rem;">
-        <h1 style="color:#39a84f; font-size:2.5rem;">✔ Vote Submitted!</h1>
-        <p style="margin-top:1rem; color:#615335; font-size:1.2rem;">
-          Thank you for participating in the election.
-        </p>
-      </div>
-    `;
+    <div style="text-align:center; padding:4rem;">
+      <h1 style="color:#39a84f; font-size:2.5rem;">✔ Vote Submitted!</h1>
+      <p style="margin-top:1rem; color:#615335; font-size:1.2rem;">
+        Thank you for participating in the election.
+      </p>
+      <p style="margin-top:0.5rem; color:#aaa; font-size:14px;">
+        Redirecting you back in 5 seconds...
+      </p>
+    </div>
+  `;
+
+    // Redirect to index after 5 seconds
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 5000);
 
   } catch (err) {
     console.error("Vote save failed:", err);

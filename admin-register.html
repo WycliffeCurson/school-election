@@ -4,30 +4,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heshima Election — Admin Registration</title>  <link rel="stylesheet" href="css/style.css">
+  <title>Heshima Election — Admin Registration</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin-register.css">
 </head>
 
 <body>
-  <main class="landing" style="justify-content:center; align-items:center; display:flex; min-height:100dvh;">
-    <div class="right-card" style="max-width:400px; width:100%; padding:2rem;">
-      <h2 style="color:#181b4c; margin-bottom:1rem;">Admin Registration</h2>
-      <form id="adminRegisterForm" style="display:flex; flex-direction:column; gap:8px;">
-        <label>Full Name</label>
-        <input type="text" id="adminName" placeholder="e.g. Mrs. Wanjiku" required>
+  <main class="admin-reg-main">
 
-        <label>Email</label>
-        <input type="email" id="adminEmail" placeholder="admin@heshima.school" required>
-
-        <label>Password</label>
-        <input type="password" id="adminPassword" placeholder="Create a strong password" required>
-
-        <span class="form-error" id="adminError"></span>
-
-        <button type="button" id="adminRegisterBtn" class="right-btn" style="margin-top:1rem;">
-          Create Admin Account
-        </button>
-      </form>
+    <!-- LEFT PANEL -->
+    <div class="admin-reg-left">
+      <div class="admin-reg-brand">
+        <div class="admin-reg-logo">🏫</div>
+        <h1>Heshima Road Primary</h1>
+        <p>Electoral System</p>
+        <div class="admin-reg-divider"></div>
+        <h2>Admin Portal</h2>
+        <p class="admin-reg-note">
+          This page is restricted. Only authorized school staff should create an admin account.
+        </p>
+      </div>
     </div>
+
+    <!-- RIGHT PANEL - FORM -->
+    <div class="admin-reg-right">
+      <div class="admin-reg-card" id="adminRegCard">
+        <h2>Create Admin Account</h2>
+        <p class="admin-reg-subtitle">Fill in your details to set up the admin account.</p>
+
+        <form id="adminRegisterForm">
+          <label for="adminName">Full Name</label>
+          <input type="text" id="adminName" placeholder="e.g. Mrs. Wanjiku" required>
+
+          <label for="adminEmail">Email Address</label>
+          <input type="email" id="adminEmail" placeholder="admin@heshima.school" required>
+
+          <label for="adminPassword">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="adminPassword" placeholder="Create a strong password" required>
+            <span class="toggle-password" data-target="adminPassword">👁️</span>
+          </div>
+
+          <label for="adminPasswordConfirm">Confirm Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="adminPasswordConfirm" placeholder="Repeat your password" required>
+            <span class="toggle-password" data-target="adminPasswordConfirm">👁️</span>
+          </div>
+
+          <span class="form-error" id="adminError"></span>
+
+          <button type="button" id="adminRegisterBtn">
+            Create Admin Account
+          </button>
+        </form>
+      </div>
+    </div>
+
   </main>
   <script type="module" src="js/admin-auth.js"></script>
 </body>

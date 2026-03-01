@@ -40,6 +40,7 @@ body {
   justify-content: center;
   clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 80% 90%, 80% 100%, 50% 90%, 0% 90%);
 }
+
 .card-description h1 {
   color: white;
   font-size: 2.5rem;
@@ -259,6 +260,166 @@ input:focus {
   color: #615335;
 }
 
+/* VOTER ID POPUP */
+.voter-id-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(97, 83, 53, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.voter-id-box {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.voter-id-box .tick {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.voter-id-box h2 {
+  color: #181b4c;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.voter-id-box p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 1.2rem;
+}
+
+.voter-id-number {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #181b4c;
+  background: #f0e6d2;
+  padding: 0.5rem 2rem;
+  border-radius: 12px;
+  letter-spacing: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.voter-id-warning {
+  background: #fff8ee;
+  border: 1px solid #f0c040;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 13px;
+  color: #7a5c00;
+  margin-bottom: 1.5rem;
+}
+
+.voter-id-confirm-btn {
+  width: 100%;
+  padding: 12px;
+  background: #181b4c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.voter-id-confirm-btn:hover {
+  background: #615335;
+}
+
+.role-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #181b4c;
+  background: transparent;
+  color: #181b4c;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.role-btn:hover {
+  background: #181b4c;
+  color: white;
+  border: 2px solid #181b4c;
+}
+
+.role-btn.active {
+  background: #181b4c;
+  color: white;
+}
+
+/* Fix voter/admin field sections spacing */
+#voterFields,
+#adminFields,
+#voterPasswordField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Make modal scrollable on small screens with many fields */
+.modal-right {
+  overflow-y: auto;
+}
+
+/* Tighten form gap slightly for login which has more fields */
+#loginForm {
+  gap: 4px;
+}
+
+/* Role toggle margin */
+.role-toggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+/* Prevent modal from collapsing on toggle */
+#loginForm {
+  min-height: 280px;
+  justify-content: flex-start;
+}
+
+#voterFields,
+#adminFields,
+#voterPasswordField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
 /* TABLETS AND DESKTOPS */
 @media (min-width:768px) {
   .landing {
@@ -271,7 +432,8 @@ input:focus {
 @media (min-width: 600px) {
   .modal-box {
     flex-direction: row;
-    min-height: 450px;
+    min-height: 480px;
+    /* bumped up from 450px */
   }
 
   .modal-left {
@@ -286,5 +448,9 @@ input:focus {
   .modal-right {
     flex: 1;
     padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
