@@ -159,19 +159,26 @@ button:hover {
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  position: relative;
+  /* add this */
 }
 
 /* Close button */
 
 .close {
   cursor: pointer;
-  float: right;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   font-size: 18px;
   color: #615335;
   font-weight: bold;
-  line-height: 1;
-  padding: 4px 8px;
-  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   transition: background 0.2s;
 }
 

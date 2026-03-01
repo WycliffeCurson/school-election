@@ -83,6 +83,19 @@
     </div>
   </div>
 
+  <script>
+    const registerModal = document.getElementById("registerModal");
+    const loginModal = document.getElementById("loginModal");
+
+    document.getElementById("closeRegister").onclick = () => registerModal.style.display = "none";
+    document.getElementById("closeLogin").onclick = () => loginModal.style.display = "none";
+
+    window.addEventListener("click", (e) => {
+      if (e.target === registerModal) registerModal.style.display = "none";
+      if (e.target === loginModal) loginModal.style.display = "none";
+    });
+  </script>
+  
   <script type="module" src="js/auth.js"></script>
 </body>
 
