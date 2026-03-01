@@ -120,13 +120,18 @@ button:hover {
 /* Empty modal box */
 
 .modal-box {
-  width: 90%;
+  width: 95%;
   max-width: 800px;
-  min-height: 500px;
+  min-height: auto;
   background: white;
   border-radius: 10px;
   padding: 1rem;
   display: flex;
+  flex-direction: column;
+  /* stack on mobile */
+  position: relative;
+  max-height: 90dvh;
+  overflow-y: auto;
 }
 
 .modal-right,
@@ -135,24 +140,29 @@ button:hover {
 }
 
 .modal-left {
+  display: none;
+  /* hide decorative side on mobile */
+}
+
+.modal-right {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  position: relative;
 }
 
 .circle {
-  width: 220px;
-  height: 220px;
+  width: 160px;
+  height: 160px;
   background: #615335;
   border-radius: 50%;
   position: absolute;
 }
 
 .person {
-  width: 150px;
+  width: 110px;
   position: relative;
   z-index: 1;
-  color: #ddd;
 }
 
 .modal-right {
@@ -195,7 +205,8 @@ button:hover {
 form {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  margin-top: 0.5rem;
 }
 
 label {
@@ -205,12 +216,14 @@ label {
 }
 
 input {
-  height: 36px;
+  height: 40px;
   border: solid 1px #181b4c;
   border-radius: 6px;
   padding-left: 10px;
   background: #ddd;
   outline: none;
+  font-size: 16px;
+  /* prevents iOS auto-zoom on focus */
   transition: border 0.2s ease;
 }
 
@@ -232,4 +245,26 @@ input:focus {
     flex-direction: row;
   }
 
+}
+
+/* TABLETS AND UP - show side panel */
+@media (min-width: 600px) {
+  .modal-box {
+    flex-direction: row;
+    min-height: 450px;
+  }
+
+  .modal-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background: #f9f5ef;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .modal-right {
+    flex: 1;
+    padding: 2rem;
+  }
 }
