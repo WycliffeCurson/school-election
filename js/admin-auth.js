@@ -5,9 +5,6 @@ import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase
 const btn = document.getElementById("adminRegisterBtn");
 const errorEl = document.getElementById("adminError");
 
-/* -------------------------
-PASSWORD TOGGLE
---------------------------*/
 document.querySelectorAll(".toggle-password").forEach(toggle => {
   toggle.addEventListener("click", () => {
     const input = document.getElementById(toggle.dataset.target);
@@ -17,9 +14,6 @@ document.querySelectorAll(".toggle-password").forEach(toggle => {
   });
 });
 
-/* -------------------------
-ADMIN REGISTRATION
---------------------------*/
 btn.addEventListener("click", async () => {
   const name = document.getElementById("adminName").value.trim();
   const email = document.getElementById("adminEmail").value.trim();
