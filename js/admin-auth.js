@@ -1,9 +1,6 @@
 import { auth, db } from "../firebase/config.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import {
-  doc, setDoc, collection,
-  query, where, getDocs
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const btn = document.getElementById("adminRegisterBtn");
 const errorEl = document.getElementById("adminError");
@@ -18,45 +15,6 @@ document.querySelectorAll(".toggle-password").forEach(toggle => {
     input.type = isHidden ? "text" : "password";
     toggle.textContent = isHidden ? "🙈" : "👁️";
   });
-});
-
-/* -------------------------
-CHECK IF ADMIN ALREADY EXISTS
---------------------------*/
-async function checkAdminExists() {
-  const q = query(collection(db, "users"), where("role", "==", "admin"));
-  const snapshot = await getDocs(q);
-  return !snapshot.empty;
-}
-
-/* -------------------------
-ON PAGE LOAD - lock if admin exists
---------------------------*/
-window.addEventListener("load", async () => {
-  try {
-    const adminExists = await checkAdminExists();
-    if (adminExists) {
-      document.getElementById("adminRegCard").innerHTML = `
-        <div style="text-align:center; padding:2rem;">
-          <p style="font-size:3rem;">🔒</p>
-          <h3 style="color:#181b4c; margin-bottom:0.5rem;">Access Restricted</h3>
-          <p style="color:#555; font-size:14px; line-height:1.6;">
-            An admin account already exists.<br>
-            Contact the school administrator for access.
-          </p>
-          <button onclick="window.location.href='index.html'" 
-            style="margin-top:1.5rem; padding:10px 24px; background:#181b4c; 
-            color:white; border:none; border-radius:8px; cursor:pointer; font-size:14px;">
-            Back to Login
-          </button>
-        </div>
-      `;
-    }
-  } catch (err) {
-    // Can't verify - allow registration to proceed
-    // The double-check inside the button click will catch duplicates
-    console.warn("Could not verify admin status on load - proceeding.");
-  }
 });
 
 /* -------------------------
@@ -83,12 +41,6 @@ btn.addEventListener("click", async () => {
 
   if (password !== confirmPassword) {
     errorEl.textContent = "Passwords do not match.";
-    return;
-  }
-
-  const adminExists = await checkAdminExists();
-  if (adminExists) {
-    errorEl.textContent = "An admin account already exists.";
     return;
   }
 
