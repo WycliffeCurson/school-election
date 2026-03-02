@@ -53,7 +53,9 @@ window.addEventListener("load", async () => {
       `;
     }
   } catch (err) {
-    console.error("Could not verify admin status:", err);
+    // Can't verify - allow registration to proceed
+    // The double-check inside the button click will catch duplicates
+    console.warn("Could not verify admin status on load - proceeding.");
   }
 });
 
