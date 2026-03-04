@@ -184,8 +184,7 @@ body {
 /* Filled part */
 .progress-fill {
   height: 100%;
-  background: linear-gradient(to right, #4c4cff, #2b2bb5);
-}
+  background: linear-gradient(to right, #2a2f7a, #181b4c);}
 
 /* Percentage */
 .percent {
