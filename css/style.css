@@ -42,7 +42,7 @@ body {
 }
 
 .card-description h1 {
-  color:#3C060A;
+  color: #3C060A;
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -125,7 +125,7 @@ button:hover {
   width: 95%;
   max-width: 800px;
   min-height: auto;
-  background:#F0E6D2;
+  background: #F0E6D2;
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -273,7 +273,7 @@ input:focus {
 }
 
 .voter-id-box {
-  background: white;
+  background: #F0E6D2;
   border-radius: 16px;
   padding: 2.5rem 2rem;
   max-width: 380px;
@@ -301,7 +301,7 @@ input:focus {
 }
 
 .voter-id-box h2 {
-  color: #181b4c;
+  color: #3C060A;
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
@@ -316,7 +316,7 @@ input:focus {
   display: inline-block;
   font-size: 3rem;
   font-weight: bold;
-  color: #181b4c;
+  color: #3C060A;
   background: #f0e6d2;
   padding: 0.5rem 2rem;
   border-radius: 12px;
@@ -337,17 +337,21 @@ input:focus {
 .voter-id-confirm-btn {
   width: 100%;
   padding: 12px;
-  background: #181b4c;
-  color: white;
+  background: #3C060A;
+  color: #F0E6D2;
   border: none;
   border-radius: 10px;
+  border: solid 2px #3C060A;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+  transition: all 0.3s ease-in-out;
 }
 
 .voter-id-confirm-btn:hover {
-  background: #615335;
+  background: #F0E6D2;
+  border: solid 2px #3C060A;
+  color: #3C060A;
 }
 
 .role-toggle {
