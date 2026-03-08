@@ -6,7 +6,7 @@
 
 body {
   min-height: 100dvh;
-  background-color: #f0e6d2;
+  background-color: #063B25;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -32,7 +32,7 @@ body {
   display: flex;
   padding: 3rem;
   width: 90%;
-  background: #615335;
+  background: #F0E6D2;
   min-height: 300px;
   text-align: center;
   border-radius: 10px;
@@ -42,7 +42,7 @@ body {
 }
 
 .card-description h1 {
-  color: white;
+  color:#3C060A;
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -62,19 +62,20 @@ body {
 }
 
 .card-form h1 {
-  color: #615335;
+  color: #F0E6D2;
   margin-bottom: 2%;
   font-size: 2rem;
 }
 
 .card-form h2 {
-  color: #181b4c;
+  color: #F0E6D2;
   margin-bottom: 12%;
   font-size: 2rem;
 }
 
 .card-form p {
   margin-bottom: 2%;
+  color: #F0E6D2;
 }
 
 .button-container {
@@ -90,16 +91,16 @@ body {
 button {
   padding: 10px 20px;
   border-radius: 10px;
-  background: #181b4c;
-  color: white;
-  border: solid 2px #181b4c;
+  background: #3C060A;
+  color: #F0E6D2;
+  border: solid 2px #3C060A;
   transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-  background: transparent;
-  border: solid 2px #615335;
-  color: #181b4c;
+  background: #F0E6D2;
+  border: solid 2px #3C060A;
+  color: #3C060A;
 }
 
 .left-btn,
@@ -124,7 +125,7 @@ button:hover {
   width: 95%;
   max-width: 800px;
   min-height: auto;
-  background: white;
+  background:#F0E6D2;
   border-radius: 10px;
   padding: 1rem;
   display: flex;
@@ -155,7 +156,7 @@ button:hover {
 .circle {
   width: 160px;
   height: 160px;
-  background: #615335;
+  background: #3C060A;
   border-radius: 50%;
   position: absolute;
 }
@@ -182,7 +183,7 @@ button:hover {
   top: 1rem;
   right: 1rem;
   font-size: 18px;
-  color: #615335;
+  color: #3C060A;
   font-weight: bold;
   width: 28px;
   height: 28px;
@@ -194,11 +195,11 @@ button:hover {
 }
 
 .close:hover {
-  background: #f0e6d2;
+  background: white;
 }
 
 .modal-right h2 {
-  color: #181b4c;
+  color: #3C060A;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
@@ -218,7 +219,7 @@ label {
 
 input {
   height: 40px;
-  border: solid 1px #181b4c;
+  border: solid 1px #3C060A;
   border-radius: 6px;
   padding-left: 10px;
   background: #ddd;
@@ -229,7 +230,7 @@ input {
 }
 
 input:focus {
-  border-color: #615335;
+  border-color: #3C060A;
   background: #f9f5ef;
 }
 
@@ -359,22 +360,22 @@ input:focus {
   flex: 1;
   padding: 8px;
   border-radius: 8px;
-  border: 2px solid #181b4c;
+  border: 2px solid #3C060A;
   background: transparent;
-  color: #181b4c;
+  color: #3C060A;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .role-btn:hover {
-  background: #181b4c;
+  background: #3C060A;
   color: white;
-  border: 2px solid #181b4c;
+  border: 2px solid #3C060A;
 }
 
 .role-btn.active {
-  background: #181b4c;
+  background: #3C060A;
   color: white;
 }
 
