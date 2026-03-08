@@ -1,3 +1,4 @@
+import { playRegistrationSound } from "./sounds.js";
 import { auth, db } from "../firebase/config.js";
 import {
   createUserWithEmailAndPassword,
@@ -26,6 +27,7 @@ closeLogin.onclick = () => loginModal.style.display = "none";
 VOTER ID POPUP
 --------------------------*/
 function showVoterIDPopup(voterID) {
+  playRegistrationSound(); // 🔔 add this line
   const popup = document.createElement("div");
   popup.className = "voter-id-popup";
   popup.innerHTML = `
