@@ -104,6 +104,7 @@ button {
   gap: 2rem;
   justify-content: center;
 }
+
 .chair-card {
   display: flex;
   flex-direction: column;

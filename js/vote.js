@@ -191,7 +191,7 @@ async function submitVotes() {
     });
 
     playDoneSound(); // 🔔 add this line
-    
+
     document.querySelector(".voting-section").innerHTML = `
     <div style="text-align:center; padding:4rem;">
       <h1 style="color:#39a84f; font-size:2.5rem;">✔ Vote Submitted!</h1>
