@@ -24,10 +24,32 @@ closeRegister.onclick = () => registerModal.style.display = "none";
 closeLogin.onclick = () => loginModal.style.display = "none";
 
 /* -------------------------
+LOADING OVERLAY
+--------------------------*/
+function showLoader(message = "Please wait...") {
+  const existing = document.getElementById("loadingOverlay");
+  if (existing) existing.remove();
+
+  const overlay = document.createElement("div");
+  overlay.className = "loading-overlay";
+  overlay.id = "loadingOverlay";
+  overlay.innerHTML = `
+    <div class="spinner"></div>
+    <p>${message}</p>
+  `;
+  document.body.appendChild(overlay);
+}
+
+function hideLoader() {
+  const overlay = document.getElementById("loadingOverlay");
+  if (overlay) overlay.remove();
+}
+
+/* -------------------------
 VOTER ID POPUP
 --------------------------*/
 function showVoterIDPopup(voterID) {
-  playRegistrationSound(); // 🔔 add this line
+  playRegistrationSound();
   const popup = document.createElement("div");
   popup.className = "voter-id-popup";
   popup.innerHTML = `
@@ -51,7 +73,6 @@ function showVoterIDPopup(voterID) {
     popup.remove();
     document.getElementById("registerModal").style.display = "none";
     document.getElementById("fullname").value = "";
-    document.getElementById("regPassword").value = "";
     document.getElementById("registerError").textContent = "";
     registerSubmitBtn.disabled = false;
     registerSubmitBtn.textContent = "Register";
@@ -77,6 +98,7 @@ document.getElementById("registerSubmit").addEventListener("click", async () => 
 
   registerSubmitBtn.disabled = true;
   registerSubmitBtn.textContent = "Registering...";
+  showLoader("Registering your account...");
 
   try {
     const counterRef = doc(db, "meta", "voterCounter");
@@ -97,7 +119,7 @@ document.getElementById("registerSubmit").addEventListener("click", async () => 
 
       voterID = String(newCount).padStart(4, "0");
       const fakeEmail = `${voterID}@heshima.voter`;
-      const internalPassword = `heshima_${voterID}`; // 13 chars, Firebase happy
+      const internalPassword = `heshima_${voterID}`;
 
       try {
         userCredential = await createUserWithEmailAndPassword(auth, fakeEmail, internalPassword);
@@ -123,13 +145,14 @@ document.getElementById("registerSubmit").addEventListener("click", async () => 
       createdAt: new Date()
     });
 
+    hideLoader();
     showVoterIDPopup(voterID);
 
   } catch (err) {
     console.error("FULL ERROR:", err);
+    hideLoader();
     errorEl.style.color = "red";
     errorEl.textContent = "Registration failed. Please try again.";
-
     registerSubmitBtn.disabled = false;
     registerSubmitBtn.textContent = "Register";
   }
@@ -173,14 +196,15 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
 
   loginSubmitBtn.disabled = true;
   loginSubmitBtn.textContent = "Logging in...";
+  showLoader("Logging you in...");
 
   try {
     if (currentRole === "admin") {
-      // Admin login - email + password
       const email = document.getElementById("loginEmail").value.trim();
       const password = document.getElementById("loginPassword").value;
 
       if (!email || !password) {
+        hideLoader();
         errorEl.textContent = "Please fill in all fields.";
         loginSubmitBtn.disabled = false;
         loginSubmitBtn.textContent = "Login";
@@ -192,20 +216,22 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
       const userData = userDoc.data();
 
       if (userData.role !== "admin") {
+        hideLoader();
         errorEl.textContent = "You are not authorized as admin.";
         loginSubmitBtn.disabled = false;
         loginSubmitBtn.textContent = "Login";
         return;
       }
 
+      hideLoader();
       window.location.href = "results.html";
 
     } else {
-      // Voter login - name + voter ID only
       const name = document.getElementById("loginName").value.trim().toLowerCase();
       const voterID = document.getElementById("loginVoterID").value.trim();
 
       if (!name || !voterID) {
+        hideLoader();
         errorEl.textContent = "Please fill in all fields.";
         loginSubmitBtn.disabled = false;
         loginSubmitBtn.textContent = "Login";
@@ -214,15 +240,14 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
 
       const padded = voterID.padStart(4, "0");
       const fakeEmail = `${padded}@heshima.voter`;
-
-      // Voter ID is used as the password behind the scenes
       const internalPassword = `heshima_${padded}`;
+
       const userCredential = await signInWithEmailAndPassword(auth, fakeEmail, internalPassword);
       const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
       const userData = userDoc.data();
 
-      // Verify name matches
       if (userData.fullname.toLowerCase() !== name) {
+        hideLoader();
         errorEl.textContent = "Name does not match this Voter ID.";
         loginSubmitBtn.disabled = false;
         loginSubmitBtn.textContent = "Login";
@@ -230,6 +255,7 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
       }
 
       if (userData.hasVoted) {
+        hideLoader();
         errorEl.style.color = "orange";
         errorEl.textContent = "You have already voted. Thank you!";
         loginSubmitBtn.disabled = false;
@@ -237,11 +263,13 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
         return;
       }
 
+      hideLoader();
       window.location.href = "vote.html";
     }
 
   } catch (err) {
     console.error(err);
+    hideLoader();
     errorEl.style.color = "red";
 
     if (err.code === "auth/invalid-credential" || err.code === "auth/user-not-found") {

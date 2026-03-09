@@ -55,10 +55,7 @@ tabs.forEach((tab, index) => {
 LIVE RESULTS
 --------------------------*/
 function startLiveResults() {
-  // Listen to votes collection in real time
   onSnapshot(collection(db, "votes"), async (votesSnapshot) => {
-
-    // Count votes per candidate
     const voteCounts = {};
     votesSnapshot.forEach(docSnap => {
       const { candidateId } = docSnap.data();
@@ -67,11 +64,12 @@ function startLiveResults() {
       }
     });
 
-    // Load and render each position
-    const positions = ["chair", "vice", "speaker"];
-    for (const position of positions) {
-      await renderPosition(position, voteCounts);
-    }
+    // Load all three positions simultaneously
+    await Promise.all([
+      renderPosition("chair", voteCounts),
+      renderPosition("vice", voteCounts),
+      renderPosition("speaker", voteCounts)
+    ]);
   });
 }
 

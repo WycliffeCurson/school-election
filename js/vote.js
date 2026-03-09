@@ -54,11 +54,11 @@ LOAD CANDIDATES FROM FIRESTORE
 async function loadCandidates() {
   const positions = ["chair", "vice", "speaker"];
 
-  for (const position of positions) {
+  // Load all three positions at the same time
+  await Promise.all(positions.map(async (position) => {
     const box = document.getElementById(`${position}-box`);
 
     try {
-      // Remove orderBy to avoid needing composite index
       const q = query(
         collection(db, "candidates"),
         where("position", "==", position)
@@ -68,10 +68,9 @@ async function loadCandidates() {
 
       if (snapshot.empty) {
         box.innerHTML = `<p class="no-candidates-msg">No candidates registered for this position yet.</p>`;
-        continue;
+        return;
       }
 
-      // Sort manually by createdAt
       let candidates = [];
       snapshot.forEach(docSnap => {
         candidates.push({ id: docSnap.id, ...docSnap.data() });
@@ -79,12 +78,10 @@ async function loadCandidates() {
       candidates.sort((a, b) => a.createdAt?.toMillis() - b.createdAt?.toMillis());
 
       box.innerHTML = "";
-
       candidates.forEach(c => {
         const card = document.createElement("div");
         card.className = "chair-card";
         card.dataset.candidateId = c.id;
-
         card.innerHTML = `
           ${c.photo
             ? `<img src="${c.photo}" alt="${c.name}">`
@@ -94,7 +91,6 @@ async function loadCandidates() {
           <p class="title">${c.className}</p>
           <button class="vote-btn">Vote</button>
         `;
-
         box.appendChild(card);
       });
 
@@ -104,7 +100,7 @@ async function loadCandidates() {
       console.error(`Error loading ${position} candidates:`, err);
       box.innerHTML = `<p class="no-candidates-msg">Error loading candidates. Please refresh.</p>`;
     }
-  }
+  }));
 }
 
 /* -------------------------
