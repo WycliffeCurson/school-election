@@ -3,7 +3,7 @@ import { auth, db } from "../firebase/config.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
   collection, getDocs, query,
-  where, orderBy, doc, getDoc,
+  where, doc, getDoc,
   setDoc, updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
@@ -195,7 +195,7 @@ async function submitVotes() {
     document.querySelector(".voting-section").innerHTML = `
     <div style="text-align:center; padding:4rem;">
       <h1 style="color:#39a84f; font-size:2.5rem;">✔ Vote Submitted!</h1>
-      <p style="margin-top:1rem; color:#615335; font-size:1.2rem;">
+      <p style="margin-top:1rem; color:#f0e6d2; font-size:1.2rem;">
         Thank you for participating in the election.
       </p>
       <p style="margin-top:0.5rem; color:#aaa; font-size:14px;">

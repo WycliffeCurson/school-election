@@ -2,7 +2,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
   getFirestore,
-  enableMultiTabIndexedDbPersistence
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -16,9 +18,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getFirestore(app);
-
-// Enable offline persistence - speeds up repeat visits significantly
-enableMultiTabIndexedDbPersistence(db).catch((err) => {
-  console.warn("Offline persistence unavailable:", err.code);
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({
+    tabManager: persistentMultipleTabManager()
+  })
 });

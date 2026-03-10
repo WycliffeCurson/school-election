@@ -2,7 +2,7 @@ import { auth, db } from "../firebase/config.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
   collection, getDocs, query,
-  where, orderBy, doc, getDoc, onSnapshot
+  where, doc, getDoc, onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 /* -------------------------
@@ -55,6 +55,8 @@ tabs.forEach((tab, index) => {
 LIVE RESULTS
 --------------------------*/
 function startLiveResults() {
+  trackTotalVoters(); // ← move it here
+
   onSnapshot(collection(db, "votes"), async (votesSnapshot) => {
     const voteCounts = {};
     votesSnapshot.forEach(docSnap => {
@@ -64,7 +66,6 @@ function startLiveResults() {
       }
     });
 
-    // Load all three positions simultaneously
     await Promise.all([
       renderPosition("chair", voteCounts),
       renderPosition("vice", voteCounts),
@@ -84,8 +85,7 @@ async function renderPosition(position, voteCounts) {
     // Get candidates for this position
     const q = query(
       collection(db, "candidates"),
-      where("position", "==", position),
-      orderBy("createdAt")
+      where("position", "==", position)
     );
 
     const snapshot = await getDocs(q);
@@ -165,9 +165,6 @@ async function renderPosition(position, voteCounts) {
     box.innerHTML = `<p style="color:red; text-align:center; padding:2rem;">Error loading results.</p>`;
   }
 }
-
-// Inside startLiveResults(), add this line after onSnapshot starts:
-trackTotalVoters();
 
 // Add this new function:
 async function trackTotalVoters() {
