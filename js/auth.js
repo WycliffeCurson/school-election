@@ -227,12 +227,11 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
       window.location.href = "results.html";
 
     } else {
-      const name = document.getElementById("loginName").value.trim().toLowerCase();
       const voterID = document.getElementById("loginVoterID").value.trim();
 
-      if (!name || !voterID) {
+      if (!voterID) {
         hideLoader();
-        errorEl.textContent = "Please fill in all fields.";
+        errorEl.textContent = "Please enter your Voter ID.";
         loginSubmitBtn.disabled = false;
         loginSubmitBtn.textContent = "Login";
         return;
@@ -245,14 +244,6 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
       const userCredential = await signInWithEmailAndPassword(auth, fakeEmail, internalPassword);
       const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
       const userData = userDoc.data();
-
-      if (userData.fullname.toLowerCase() !== name) {
-        hideLoader();
-        errorEl.textContent = "Name does not match this Voter ID.";
-        loginSubmitBtn.disabled = false;
-        loginSubmitBtn.textContent = "Login";
-        return;
-      }
 
       if (userData.hasVoted) {
         hideLoader();
