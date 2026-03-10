@@ -237,6 +237,15 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
         return;
       }
 
+      // Add this:
+      if (!/^\d+$/.test(voterID)) {
+        hideLoader();
+        errorEl.textContent = "Voter ID must be numbers only.";
+        loginSubmitBtn.disabled = false;
+        loginSubmitBtn.textContent = "Login";
+        return;
+      }
+
       const padded = voterID.padStart(4, "0");
       const fakeEmail = `${padded}@heshima.voter`;
       const internalPassword = `heshima_${padded}`;
@@ -264,7 +273,7 @@ document.getElementById("loginSubmit").addEventListener("click", async () => {
     errorEl.style.color = "red";
 
     if (err.code === "auth/invalid-credential" || err.code === "auth/user-not-found") {
-      errorEl.textContent = "Invalid name or Voter ID. Please check and try again.";
+      errorEl.textContent = "Invalid Voter ID. Please check and try again.";
     } else {
       errorEl.textContent = "Login failed. Please try again.";
     }
