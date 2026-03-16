@@ -5,446 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Election Summary — Heshima Road Primary</title>
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #063B25;
-      color: #222;
-      visibility: hidden;
-    }
-
-    .top-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #063B25;
-    }
-
-    .top-nav h2 {
-      color: #F0E6D2;
-      font-size: 1rem;
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 0.8rem;
-    }
-
-    .nav-btn {
-      padding: 8px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .btn-print {
-      background: #615335;
-      color: white;
-    }
-
-    .btn-back {
-      background: #181b4c;
-      color: white;
-    }
-
-    .btn-logout {
-      background: #e74c3c;
-      color: white;
-    }
-
-    .summary-wrapper {
-      max-width: 900px;
-      margin: 1rem auto 3rem;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    /* HEADER */
-    .summary-header {
-      background: #063B25;
-      color: #F0E6D2;
-      text-align: center;
-      padding: 2rem 1rem 1.5rem;
-    }
-
-    .summary-header h1 {
-      font-size: 1.6rem;
-      letter-spacing: 2px;
-    }
-
-    .summary-header h2 {
-      font-size: 1rem;
-      font-weight: normal;
-      opacity: 0.85;
-      margin-bottom: 0.3rem;
-    }
-
-    .summary-header p {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      margin-top: 0.4rem;
-    }
-
-    .header-divider {
-      width: 60px;
-      height: 3px;
-      background: #F0E6D2;
-      margin: 0.8rem auto;
-      border-radius: 2px;
-    }
-
-    /* SECTION TITLES */
-    .section-title {
-      background: #f5f0e8;
-      border-left: 5px solid #063B25;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.95rem;
-      font-weight: bold;
-      color: #063B25;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* OVERVIEW STATS */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid #eee;
-    }
-
-    .stat-box {
-      text-align: center;
-      padding: 1.5rem 1rem;
-      border-right: 1px solid #eee;
-    }
-
-    .stat-box:last-child {
-      border-right: none;
-    }
-
-    .stat-value {
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: #063B25;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: #777;
-      margin-top: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .stat-box.highlight .stat-value {
-      color: #27ae60;
-    }
-
-    .stat-box.warning .stat-value {
-      color: #e67e22;
-    }
-
-    /* TURNOUT BAR */
-    .turnout-section {
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .turnout-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: #555;
-      margin-bottom: 0.5rem;
-    }
-
-    .turnout-bar-bg {
-      height: 14px;
-      background: #eee;
-      border-radius: 7px;
-      overflow: hidden;
-    }
-
-    .turnout-bar-fill {
-      height: 100%;
-      background: linear-gradient(to right, #063B25, #0f7b4e);
-      border-radius: 7px;
-    }
-
-    /* INTEGRITY */
-    .integrity-section {
-      padding: 1.2rem 1.5rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .integrity-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 0.8rem;
-    }
-
-    .integrity-item {
-      background: #fafafa;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .integrity-item .i-value {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #063B25;
-    }
-
-    .integrity-item .i-label {
-      font-size: 0.75rem;
-      color: #777;
-      margin-top: 0.3rem;
-    }
-
-    .integrity-item.ok {
-      border-color: #27ae60;
-    }
-
-    .integrity-item.ok .i-value {
-      color: #27ae60;
-    }
-
-    .integrity-item.warn {
-      border-color: #e67e22;
-    }
-
-    .integrity-item.warn .i-value {
-      color: #e67e22;
-    }
-
-    /* POSITION BLOCK */
-    .position-block {
-      border-bottom: 1px solid #eee;
-    }
-
-    .position-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.8rem 1.5rem;
-      background: #fafafa;
-      border-bottom: 1px solid #eee;
-    }
-
-    .position-badge {
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .badge-chair {
-      background: #181b4c;
-    }
-
-    .badge-vice {
-      background: #27ae60;
-    }
-
-    .badge-speaker {
-      background: #e67e22;
-    }
-
-    .position-meta {
-      font-size: 0.82rem;
-      color: #777;
-    }
-
-    .position-meta strong {
-      color: #222;
-    }
-
-    /* CANDIDATE TABLE */
-    .candidate-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .candidate-table th {
-      background: #f5f5f5;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #888;
-      padding: 0.6rem 1.5rem;
-      text-align: left;
-      font-weight: 600;
-    }
-
-    .candidate-table td {
-      padding: 0.9rem 1.5rem;
-      border-top: 1px solid #f0f0f0;
-      font-size: 0.9rem;
-      vertical-align: middle;
-    }
-
-    .candidate-table tr.winner-row td {
-      background: #f0faf5;
-    }
-
-    .candidate-table th:last-child,
-    .candidate-table td:last-child {
-      text-align: right;
-    }
-
-    .winner-badge {
-      display: inline-block;
-      background: #27ae60;
-      color: white;
-      font-size: 0.65rem;
-      padding: 2px 8px;
-      border-radius: 10px;
-      margin-left: 8px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      vertical-align: middle;
-    }
-
-    .mini-bar-bg {
-      height: 8px;
-      background: #eee;
-      border-radius: 4px;
-      overflow: hidden;
-      width: 100px;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-
-    .mini-bar-fill {
-      height: 100%;
-      border-radius: 4px;
-    }
-
-    .fill-chair {
-      background: #181b4c;
-    }
-
-    .fill-vice {
-      background: #27ae60;
-    }
-
-    .fill-speaker {
-      background: #e67e22;
-    }
-
-    .pct-text {
-      font-size: 0.8rem;
-      color: #555;
-    }
-
-    /* SIGNATURES */
-    .signature-section {
-      padding: 2rem 1.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem 3rem;
-    }
-
-    .sig-line {
-      border-bottom: 1.5px solid #333;
-      margin-bottom: 0.4rem;
-      height: 40px;
-    }
-
-    .sig-label {
-      font-size: 0.8rem;
-      color: #555;
-      font-weight: bold;
-    }
-
-    .sig-title {
-      font-size: 0.75rem;
-      color: #999;
-      margin-top: 0.2rem;
-    }
-
-    /* FOOTER */
-    .summary-footer {
-      background: #063B25;
-      color: #F0E6D2;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.75rem;
-      opacity: 0.9;
-    }
-
-    .loading-msg {
-      text-align: center;
-      padding: 3rem;
-      color: #aaa;
-      font-size: 1rem;
-    }
-
-    /* PRINT */
-    @media print {
-      body {
-        background: white !important;
-        visibility: visible !important;
-      }
-
-      .top-nav {
-        display: none !important;
-      }
-
-      .summary-wrapper {
-        box-shadow: none;
-        border-radius: 0;
-        margin: 0;
-        max-width: 100%;
-      }
-
-      .summary-header,
-      .summary-footer,
-      .section-title,
-      .turnout-bar-fill,
-      .mini-bar-fill,
-      .position-badge,
-      .winner-badge,
-      .integrity-item.ok,
-      .integrity-item.warn {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/summary.css">
 </head>
 
 <body>
 
+  <!-- TOP NAV -->
   <nav class="top-nav">
     <h2>Heshima Road Primary — Election Summary</h2>
     <div class="nav-actions">
-      <button class="nav-btn btn-back" onclick="window.location.href='results.html'">← Back to Results</button>
-      <button class="nav-btn btn-print" onclick="window.print()">🖨️ Print Summary</button>
+      <button class="nav-btn btn-back" onclick="window.location.href='results.html'">← Results</button>
+      <button class="nav-btn btn-print" onclick="window.print()">🖨️ Print</button>
       <button class="nav-btn btn-logout" id="logoutBtn">Logout</button>
     </div>
   </nav>
 
+  <!-- SUMMARY CONTENT -->
   <div class="summary-wrapper" id="summaryWrapper">
     <div class="loading-msg">Loading election summary...</div>
   </div>
@@ -456,7 +32,7 @@
       collection, getDocs, query, where, doc, getDoc
     } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    /* ROUTE GUARD */
+    /* ── ROUTE GUARD ── */
     onAuthStateChanged(auth, async (user) => {
       if (!user) { window.location.href = "index.html"; return; }
       const userDoc = await getDoc(doc(db, "users", user.uid));
@@ -466,13 +42,13 @@
       await buildSummary();
     });
 
-    /* LOGOUT */
+    /* ── LOGOUT ── */
     document.getElementById("logoutBtn").addEventListener("click", async () => {
       await signOut(auth);
       window.location.href = "index.html";
     });
 
-    /* BUILD SUMMARY */
+    /* ── BUILD SUMMARY ── */
     async function buildSummary() {
       const wrapper = document.getElementById("summaryWrapper");
       try {
@@ -494,7 +70,8 @@
           }
         });
         const totalDidNotVote = totalRegistered - totalVoted;
-        const turnoutPct = totalRegistered > 0 ? Math.round((totalVoted / totalRegistered) * 100) : 0;
+        const turnoutPct = totalRegistered > 0
+          ? Math.round((totalVoted / totalRegistered) * 100) : 0;
 
         // Votes
         const voteCounts = {};
@@ -523,9 +100,12 @@
         const viceC = buildCandidates(viceSnap);
         const speakerC = buildCandidates(speakerSnap);
 
-        const generatedAt = new Date().toLocaleString("en-KE", { dateStyle: "full", timeStyle: "short" });
+        const generatedAt = new Date().toLocaleString("en-KE", {
+          dateStyle: "full", timeStyle: "short"
+        });
 
         wrapper.innerHTML = `
+
           <div class="summary-header">
             <h2>Heshima Road Primary and Junior School</h2>
             <div class="header-divider"></div>
@@ -579,7 +159,7 @@
                 <div class="i-label">Uncast — Speaker</div>
               </div>
             </div>
-            <p style="font-size:0.78rem;color:#999;margin-top:0.8rem;">
+            <p style="font-size:0.78rem;color:#999;margin-top:0.8rem;line-height:1.5;">
               * Uncast votes indicate positions where a student did not complete their selection.
               A value of 0 means all votes were successfully cast for that position.
             </p>
@@ -627,25 +207,28 @@
       }
     }
 
-    /* RENDER POSITION BLOCK */
+    /* ── RENDER POSITION BLOCK ── */
     function renderBlock(title, position, badgeClass, fillClass, candidates, totalPosVotes) {
       const winner = candidates[0];
       const rows = candidates.map((c, i) => {
-        const pct = totalPosVotes > 0 ? Math.round((c.votes / totalPosVotes) * 100) : 0;
+        const pct = totalPosVotes > 0
+          ? Math.round((c.votes / totalPosVotes) * 100) : 0;
         const isWinner = i === 0 && c.votes > 0;
         return `
           <tr class="${isWinner ? 'winner-row' : ''}">
             <td>${i + 1}.
-              ${c.photo ? `<img src="${c.photo}" style="width:36px;height:36px;border-radius:4px;object-fit:cover;vertical-align:middle;margin-left:8px;">` : ''}
+              ${c.photo
+            ? `<img src="${c.photo}" style="width:32px;height:32px;border-radius:4px;object-fit:cover;vertical-align:middle;margin-left:6px;">`
+            : ''}
             </td>
             <td>
               <strong>${c.name}</strong>
               ${isWinner ? '<span class="winner-badge">✓ Winner</span>' : ''}
-              <br><span style="font-size:0.8rem;color:#777;">${c.className || ''}</span>
+              <br><span style="font-size:0.78rem;color:#777;">${c.className || ''}</span>
             </td>
             <td style="text-align:center;">${c.votes} ${c.votes === 1 ? 'vote' : 'votes'}</td>
             <td>
-              <div style="display:flex;align-items:center;gap:8px;justify-content:flex-end;">
+              <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
                 <div class="mini-bar-bg">
                   <div class="mini-bar-fill ${fillClass}" style="width:${pct}%"></div>
                 </div>
@@ -664,17 +247,19 @@
               Winner: <strong>${winner && winner.votes > 0 ? winner.name : 'No votes yet'}</strong>
             </span>
           </div>
-          <table class="candidate-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Candidate</th>
-                <th style="text-align:center;">Votes</th>
-                <th style="text-align:right;">Share</th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="candidate-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Candidate</th>
+                  <th style="text-align:center;">Votes</th>
+                  <th style="text-align:right;">Share</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
         </div>`;
     }
   </script>

@@ -1,0 +1,634 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #063B25;
+  color: #222;
+  visibility: hidden;
+}
+
+/* ============================================================
+   TOP NAV
+   ============================================================ */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: #063B25;
+  gap: 0.5rem;
+}
+
+.top-nav h2 {
+  color: #F0E6D2;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  padding: 7px 12px;
+  min-height: 38px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.nav-btn:hover {
+  opacity: 0.85;
+}
+
+.btn-back {
+  background: #181b4c;
+  color: white;
+}
+
+.btn-print {
+  background: #615335;
+  color: white;
+}
+
+.btn-logout {
+  background: #e74c3c;
+  color: white;
+}
+
+/* ============================================================
+   SUMMARY WRAPPER
+   ============================================================ */
+.summary-wrapper {
+  max-width: 900px;
+  margin: 1rem auto 3rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+/* ============================================================
+   SUMMARY HEADER
+   ============================================================ */
+.summary-header {
+  background: #063B25;
+  color: #F0E6D2;
+  text-align: center;
+  padding: 1.5rem 1rem 1.2rem;
+}
+
+.summary-header h2 {
+  font-size: 0.9rem;
+  font-weight: normal;
+  opacity: 0.85;
+  margin-bottom: 0.3rem;
+}
+
+.header-divider {
+  width: 60px;
+  height: 3px;
+  background: #F0E6D2;
+  margin: 0.6rem auto;
+  border-radius: 2px;
+}
+
+.summary-header h1 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.summary-header p {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.4rem;
+}
+
+/* ============================================================
+   SECTION TITLES
+   ============================================================ */
+.section-title {
+  background: #f5f0e8;
+  border-left: 5px solid #063B25;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #063B25;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   OVERVIEW STATS
+   ============================================================ */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid #eee;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 1.2rem 0.5rem;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-box:nth-child(2n) {
+  border-right: none;
+}
+
+.stat-box:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #063B25;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #777;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-box.highlight .stat-value {
+  color: #27ae60;
+}
+
+.stat-box.warning .stat-value {
+  color: #e67e22;
+}
+
+/* ============================================================
+   TURNOUT BAR
+   ============================================================ */
+.turnout-section {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.turnout-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.turnout-bar-bg {
+  height: 12px;
+  background: #eee;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.turnout-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #063B25, #0f7b4e);
+  border-radius: 7px;
+}
+
+/* ============================================================
+   INTEGRITY SECTION
+   ============================================================ */
+.integrity-section {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.integrity-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.integrity-item {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.integrity-item .i-value {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #063B25;
+}
+
+.integrity-item .i-label {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.3rem;
+}
+
+.integrity-item.ok {
+  border-color: #27ae60;
+}
+
+.integrity-item.ok .i-value {
+  color: #27ae60;
+}
+
+.integrity-item.warn {
+  border-color: #e67e22;
+}
+
+.integrity-item.warn .i-value {
+  color: #e67e22;
+}
+
+/* ============================================================
+   POSITION BLOCK
+   ============================================================ */
+.position-block {
+  border-bottom: 1px solid #eee;
+}
+
+.position-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  background: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+
+.position-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-chair {
+  background: #181b4c;
+}
+
+.badge-vice {
+  background: #27ae60;
+}
+
+.badge-speaker {
+  background: #e67e22;
+}
+
+.position-meta {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.position-meta strong {
+  color: #222;
+}
+
+/* ── CANDIDATE TABLE ── */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.candidate-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+.candidate-table th {
+  background: #f5f5f5;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #888;
+  padding: 0.5rem 0.8rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.candidate-table td {
+  padding: 0.7rem 0.8rem;
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+.candidate-table tr.winner-row td {
+  background: #f0faf5;
+}
+
+.candidate-table th:last-child,
+.candidate-table td:last-child {
+  text-align: right;
+}
+
+.winner-badge {
+  display: inline-block;
+  background: #27ae60;
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 6px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+.mini-bar-bg {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 60px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.mini-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.fill-chair {
+  background: #181b4c;
+}
+
+.fill-vice {
+  background: #27ae60;
+}
+
+.fill-speaker {
+  background: #e67e22;
+}
+
+.pct-text {
+  font-size: 0.78rem;
+  color: #555;
+}
+
+/* ============================================================
+   SIGNATURE SECTION
+   ============================================================ */
+.signature-section {
+  padding: 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.5rem;
+}
+
+.sig-line {
+  border-bottom: 1.5px solid #333;
+  margin-bottom: 0.4rem;
+  height: 36px;
+}
+
+.sig-label {
+  font-size: 0.78rem;
+  color: #555;
+  font-weight: bold;
+}
+
+.sig-title {
+  font-size: 0.72rem;
+  color: #999;
+  margin-top: 0.2rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.summary-footer {
+  background: #063B25;
+  color: #F0E6D2;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  font-size: 0.72rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.loading-msg {
+  text-align: center;
+  padding: 3rem;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   MEDIA QUERIES
+   ============================================================ */
+
+/* ── 480px — Large phones ── */
+@media (min-width: 480px) {
+  .top-nav {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .top-nav h2 {
+    font-size: 0.9rem;
+  }
+
+  .nav-btn {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+
+  .summary-wrapper {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .summary-header h1 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .summary-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .integrity-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .integrity-item .i-value {
+    font-size: 1.5rem;
+  }
+
+  .mini-bar-bg {
+    width: 80px;
+  }
+}
+
+/* ── 768px — Desktop ── */
+@media (min-width: 768px) {
+  .top-nav {
+    padding: 1rem 2rem;
+  }
+
+  .top-nav h2 {
+    font-size: 1rem;
+  }
+
+  .nav-btn {
+    font-size: 14px;
+    padding: 8px 20px;
+    min-height: 40px;
+  }
+
+  .summary-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .summary-header {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .summary-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .summary-header h2 {
+    font-size: 1rem;
+  }
+
+  .summary-header p {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-box {
+    padding: 1.5rem 1rem;
+    border-bottom: none;
+  }
+
+  .stat-box:nth-child(2n) {
+    border-right: 1px solid #eee;
+  }
+
+  .stat-box:last-child {
+    border-right: none;
+  }
+
+  .stat-value {
+    font-size: 2.2rem;
+  }
+
+  .turnout-section {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .integrity-section {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .position-header {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .candidate-table th {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .candidate-table td {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .mini-bar-bg {
+    width: 100px;
+  }
+
+  .signature-section {
+    padding: 2rem 1.5rem;
+    gap: 2.5rem 3rem;
+  }
+
+  .summary-footer {
+    font-size: 0.75rem;
+    padding: 1rem;
+  }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  body {
+    background: white !important;
+    visibility: visible !important;
+  }
+
+  .top-nav {
+    display: none !important;
+  }
+
+  .summary-wrapper {
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .summary-header,
+  .summary-footer,
+  .section-title,
+  .turnout-bar-fill,
+  .mini-bar-fill,
+  .position-badge,
+  .winner-badge,
+  .integrity-item.ok,
+  .integrity-item.warn {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

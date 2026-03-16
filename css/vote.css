@@ -1,3 +1,6 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
 * {
   margin: 0;
   padding: 0;
@@ -7,37 +10,56 @@
 body {
   min-height: 100dvh;
   background-color: #063B25;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   visibility: hidden;
 }
 
+/* ============================================================
+   SCHOOL NAME HEADER
+   ============================================================ */
 .school-name {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.2rem 1rem 0.8rem;
+  color: #F0E6D2;
+  text-align: center;
+}
+
+.school-name h3 {
+  font-size: 1rem;
+  font-weight: 600;
   color: #F0E6D2;
 }
 
 .divider {
-  margin: 10px 0;
+  margin: 0.6rem 0;
   width: 35%;
   height: 2px;
   background: #F0E6D2;
 }
 
-/* SECTION */
+.school-name h1 {
+  font-size: 1.2rem;
+  color: #F0E6D2;
+  font-weight: 600;
+}
 
+/* ============================================================
+   VOTING SECTION
+   ============================================================ */
 .voting-section {
   width: 100%;
   max-width: 900px;
   margin: auto;
-  padding: 20px;
+  padding: 16px;
 }
 
-/* TABS */
-
+/* ============================================================
+   TABS
+   ============================================================ */
 .tabs {
   position: relative;
   display: flex;
@@ -45,25 +67,22 @@ body {
   border-bottom: 2px solid #ccc;
 }
 
-
 .tab {
   flex: 1;
-  padding: 15px;
+  padding: 12px 8px;
   border: none;
   background: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-button {
-  background: transparent;
-  border: none;
   color: #F0E6D2;
-  /* font-size: 18px; */
+  font-size: 14px;
   cursor: pointer;
+  transition: color 0.2s;
 }
 
-/* UNDERLINE */
+.tab:hover {
+  color: #F0E6D2;
+  background: rgba(240, 230, 210, 0.1);
+  border: none;
+}
 
 .underline {
   position: absolute;
@@ -71,17 +90,16 @@ button {
   left: 0;
   width: 33.33%;
   height: 3px;
-  background: black;
-  transition: 0.3s;
+  background: #3C060A;
+  transition: left 0.3s;
 }
 
-/* CONTENT */
-
+/* ============================================================
+   TAB CONTENT
+   ============================================================ */
 .tab-content {
-  margin-top: 20px;
+  margin-top: 16px;
 }
-
-/* GROUPS */
 
 .group {
   display: none;
@@ -91,71 +109,76 @@ button {
   display: block;
 }
 
-
-/* CONTENT BOX */
-
+/* ── CONTENT BOX ── */
 .content-box {
   display: flex;
   flex-wrap: wrap;
   min-height: 200px;
   border: 1px solid #F0E6D2;
   border-radius: 10px;
-  padding: 20px;
-  gap: 2rem;
+  padding: 16px;
+  gap: 1rem;
   justify-content: center;
+  align-items: stretch;
 }
 
+/* ============================================================
+   CANDIDATE CARD
+   ============================================================ */
 .chair-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  width: 180px;
-  min-width: 150px;
-  box-shadow: 0 4px 8px 0 rgba(97, 83, 53, 0.7);
+  width: calc(50% - 0.5rem);
+  min-width: 130px;
+  max-width: 200px;
+  box-shadow: 0 4px 8px rgba(97, 83, 53, 0.7);
   overflow: hidden;
   background: #F0E6D2;
 }
 
 .chair-card img {
   width: 100%;
-  height: 160px;
+  height: 130px;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
 
 .chair-card h1 {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   text-align: center;
-  padding: 8px 8px 0 8px;
+  padding: 6px 8px 0 8px;
   color: #3C060A;
   width: 100%;
-  /* clamp to 2 lines max */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 2.5rem;
+  min-height: 2.4rem;
   line-height: 1.3;
 }
 
 .chair-card .title {
-  font-size: 12px;
-  color: #3C060A;
+  font-size: 11px;
+  color: #615335;
   text-align: center;
-  padding: 0 8px;
+  padding: 2px 8px 0;
 }
 
+/* ── VOTE BUTTON ── */
 .vote-btn {
-  padding: 8px 16px;
+  padding: 8px 12px;
+  min-height: 40px;
   border-radius: 10px;
   background: #3C060A;
   color: #F0E6D2;
   border: solid 2px #3C060A;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
-  margin: auto 0 10px 0;
-  /* pushes button to bottom */
+  margin: auto 8px 8px 8px;
   width: calc(100% - 16px);
+  font-size: 0.85rem;
 }
 
 .vote-btn:hover {
@@ -165,7 +188,7 @@ button {
 }
 
 .vote-btn.voted {
-  background: #39a84f !important;
+  background: #39a84f;
   color: transparent;
   border: solid 2px #39a84f;
   position: relative;
@@ -178,17 +201,31 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 40px;
+  font-size: 20px;
   font-weight: bold;
+  color: white;
 }
 
 .chair-card.disabled {
   opacity: 0.5;
-  /* darken unvoted candidates */
   pointer-events: none;
-  /* disable clicking */
 }
 
+/* ── NO PHOTO PLACEHOLDER ── */
+.no-photo {
+  width: 100%;
+  height: 130px;
+  background: #ddd;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* ── MESSAGES ── */
 .loading-msg {
   color: #aaa;
   text-align: center;
@@ -205,15 +242,108 @@ button {
   width: 100%;
 }
 
-.no-photo {
-  width: 100%;
-  height: 160px;
-  background: #ddd;
-  border-radius: 10px 10px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #999;
-  font-size: 13px;
-  flex-shrink: 0;
+/* ============================================================
+   MEDIA QUERIES
+   ============================================================ */
+
+/* ── 480px — Large phones ── */
+@media (min-width: 480px) {
+  .school-name h3 {
+    font-size: 1.1rem;
+  }
+
+  .school-name h1 {
+    font-size: 1.4rem;
+  }
+
+  .tab {
+    font-size: 16px;
+    padding: 14px 10px;
+  }
+
+  .chair-card {
+    width: calc(33% - 0.7rem);
+  }
+
+  .chair-card img {
+    height: 150px;
+  }
+
+  .no-photo {
+    height: 150px;
+  }
+
+  .chair-card h1 {
+    font-size: 0.9rem;
+  }
+
+  .vote-btn {
+    font-size: 0.9rem;
+  }
+
+  .vote-btn.voted::after {
+    font-size: 24px;
+  }
+}
+
+/* ── 768px — Desktop ── */
+@media (min-width: 768px) {
+  .school-name {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .school-name h3 {
+    font-size: 1.2rem;
+  }
+
+  .school-name h1 {
+    font-size: 1.6rem;
+  }
+
+  .voting-section {
+    padding: 20px;
+  }
+
+  .tab {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .content-box {
+    padding: 20px;
+    gap: 2rem;
+  }
+
+  .chair-card {
+    width: 180px;
+    min-width: 150px;
+    max-width: 220px;
+  }
+
+  .chair-card img {
+    height: 160px;
+  }
+
+  .no-photo {
+    height: 160px;
+    font-size: 13px;
+  }
+
+  .chair-card h1 {
+    font-size: 0.95rem;
+    padding: 8px 8px 0;
+  }
+
+  .chair-card .title {
+    font-size: 12px;
+  }
+
+  .vote-btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .vote-btn.voted::after {
+    font-size: 40px;
+  }
 }

@@ -4,79 +4,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heshima Election — Results</title>
   <link rel="stylesheet" href="css/results.css">
-  <title>Document</title>
 </head>
 
 <body>
   <main>
+
+    <!-- HEADER -->
     <div class="school-name">
       <h3>Heshima Road Primary and Junior School</h3>
       <p>Electoral System</p>
       <div class="divider"></div>
       <h1>ELECTION RESULTS</h1>
-      <div style="display:flex; gap:1rem; margin-top:1rem;">
-        <button onclick="window.location.href='admin-panel.html'"
-          style="background:#615335; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer;">
+      <div class="nav-buttons">
+        <button class="nav-btn nav-btn-manage" onclick="window.location.href='admin-panel.html'">
           Manage Candidates
         </button>
-        <button onclick="window.location.href='summary.html'"
-          style="background:#615335; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer;">
+        <button class="nav-btn nav-btn-summary" onclick="window.location.href='summary.html'">
           📋 View Summary
         </button>
-        <button id="logoutBtn"
-          style="background:#e74c3c; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer;">
+        <button class="nav-btn nav-btn-logout" id="logoutBtn">
           Logout
         </button>
       </div>
     </div>
+
+    <!-- RESULTS SECTION -->
     <section class="results-section">
 
       <div class="voter-summary" id="voterSummary">
         <span>Total Votes Cast: <strong id="totalVotesCast">—</strong></span>
       </div>
 
-      <!-- Tabs -->
+      <!-- TABS -->
       <div class="tabs">
-        <button class="tab active" data-target="chair">
-          Chair
-        </button>
-        <button class="tab" data-target="vice">
-          Vice-Chair
-        </button>
-        <button class="tab" data-target="speaker">
-          Speaker
-        </button>
-        <!-- Moving underline -->
+        <button class="tab active" data-target="chair">Chair</button>
+        <button class="tab" data-target="vice">Vice-Chair</button>
+        <button class="tab" data-target="speaker">Speaker</button>
         <div class="underline"></div>
       </div>
 
-      <!-- Content Area -->
-
+      <!-- TAB CONTENT -->
       <div class="tab-content">
 
-        <!-- Chair Group -->
         <div class="group active" id="chair">
           <div class="content-box" id="chair-box">
             <p style="color:#aaa; text-align:center; padding:2rem;">Loading results...</p>
           </div>
         </div>
 
-        <!-- Vice Chair Group -->
         <div class="group" id="vice">
           <div class="content-box" id="vice-box">
             <p style="color:#aaa; text-align:center; padding:2rem;">Loading results...</p>
           </div>
         </div>
 
-        <!-- Speaker Group -->
         <div class="group" id="speaker">
           <div class="content-box" id="speaker-box">
             <p style="color:#aaa; text-align:center; padding:2rem;">Loading results...</p>
           </div>
         </div>
+
       </div>
     </section>
+
   </main>
   <script type="module" src="js/results.js"></script>
 </body>
